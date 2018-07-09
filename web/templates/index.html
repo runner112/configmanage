@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand">ip查询</a>
+    </div>
+    <div>
+        <form  class="navbar-form navbar-left" role="search" method="post" action="/">
+            <div class="form-group">
+                <input id="get_ip" name ="ipaddress" type="text" class="form-control" placeholder="Search">
+            </div>
+            <input type="submit" class="btn btn-default" value="提交">
+        </form>
+    </div>
+    </div>
+</nav>
+
+    <div class="alert alert-warning">{{ list.status }}</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>主机组</th>
+      <th>ip信息</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in ha %}
+    <tr>
+      <td>{{ i.group }}</td>
+      <td>{{ i.ip }}</td>
+      <td ><a href="/hostgroup/{{ i.group }}/">编辑配置</a></td>
+       <td>执行playbook</td>
+    </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+
+
+
+
+
+
+
+

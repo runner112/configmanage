@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>upstream组</th>
+        <th colspan="3">运维操作</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in upstream_infor.Upstream %}
+    <tr>
+      <td>{{ i }}</td>
+      <td ><a target="_blank" href="{{ upstream_infor.Service }}?upstream={{ i }}">查看配置</a></td>
+      <td ><a target="_blank" href="/upstream/{{ upstream_infor.Service }}?upstream={{ i }}">编辑配置</a></td>
+    </tr>
+      {% endfor %}
+  </tbody>
+ </table>
+<div><a href="/playbook/{{ upstream_infor.Service }}/" style="color:blue;" class="btn btn-default" role="button">下发配置</a>
+ </div>
+{% endblock %}

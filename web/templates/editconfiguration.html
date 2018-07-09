@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <style>
+    textarea
+    {
+        width:100%;
+        height: 1000px;
+    }
+
+    </style>
+    <script>
+        function GetUrlRelativePath() {
+　　　　var url = document.location.toString();
+　　　　var arrUrl = url.split("//");
+　　　　var start = arrUrl[1].indexOf("/");
+　　　　var relUrl = arrUrl[1].substring(start);
+　　　　if(relUrl.indexOf("?") != -1){
+　　　　　　relUrl = relUrl.split("?")[0];
+　　　　}
+　　　　return relUrl;
+　　}
+    var dizhi = GetUrlRelativePath();
+	$(document).ready(function(){
+        $('#button01').click(function () {
+            $("#show1").fadeIn("slow");
+            $.post(dizhi,{
+              comment : $("#comment1").val(),
+              idnumber: "button01"
+
+            },
+            function (data,status) {
+                document.getElementById('show1').innerHTML=data
+            }
+            )
+        })
+
+        $('#button02').click(function () {
+            $("#show1").fadeIn("slow");
+            $.post(dizhi,{
+              comment : $("#comment1").val(),
+              idnumber: "button02"
+            },
+            function (data,status) {
+                document.getElementById('show1').innerHTML=data
+            }
+            )
+        })
+
+        $('#button03').click(function () {
+            $("#show1").fadeIn("slow");
+            $.post(dizhi,{
+              comment : $("#comment1").val(),
+              idnumber: "button03"
+            },
+            function (data,status) {
+                document.getElementById('show1').innerHTML=data
+            }
+            )
+        })
+
+	});
+
+	</script>
+
+<div class="page-header">
+    <h4>{{ mesg.group }} 配置</h4>
+</div>
+
+<pre id="show1"  style="display:none"></pre>
+<button id="button01"  class="btn btn-default" style="color: blue">更改比对</button>
+<button id="button02"  class="btn btn-default" style="color: #0088cc">提交配置</button>
+<button id="button03"  class="btn btn-default" style="color: red">回滚配置</button>
+
+<nav class="navbar navbar-default" role="navigation">
+        <form  name="configureform" class="navbar-form" role="search" method="post" action="/hostgroup/{{ mesg.group }}/">
+        <textarea id="comment1" name="comment"  class="textarea" style="background-color:black;color: white" >{{ mesg.content }}</textarea>
+        </form>
+
+</nav>
+{% endblock %}

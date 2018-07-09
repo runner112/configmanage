@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{% block title %}ansible管理系统{% endblock %}</title>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="http://10.75.26.82:8282/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://10.75.26.82:8282/bootstrap/js/jquery.min.js"></script>
+    <script src="http://10.75.26.82:8282/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+/* Custom Styles */
+    ul.nav-tabs{
+        width: 140px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    }
+    ul.nav-tabs li{
+        margin: 0;
+        border-top: 1px solid #ddd;
+    }
+    ul.nav-tabs li:first-child{
+        border-top: none;
+    }
+    ul.nav-tabs li a{
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 0;
+    }
+    ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+        color: #fff;
+        background: #0088cc;
+        border: 1px solid #0088cc;
+    }
+    ul.nav-tabs li:first-child a{
+        border-radius: 4px 4px 0 0;
+    }
+    ul.nav-tabs li:last-child a{
+        border-radius: 0 0 4px 4px;
+    }
+    ul.nav-tabs.affix{
+        top: 30px; /* Set the top position of pinned element */
+    }
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">ansible管理平台</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">ip查询</a></li>
+            <li><a href="#">编辑配置文件</a></li>
+            <li><a href="#">palybook执行</a></li>
+
+        </ul>
+
+    </div>
+
+     <div class="btn-group " style="margin-top:10px;margin-left:18px;">
+	    <button type="button" class="btn btn-primary">7层member管理</button>
+	    <button type="button"  class="btn btn-primary dropdown-toggle"
+			data-toggle="dropdown">
+		<span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu" role="menu">
+		<li><a href="/layer7?idc=main/l7_main_yf">主站永丰</a></li>
+		<li><a href="/layer7?idc=main/l7_main_tc">主站土城</a></li>
+		<li><a href="/layer7?idc=main/l7_main_edu">主站教育网</a></li>
+		<li><a href="/layer7?idc=huati/l7_huati_tc">话题土城</a></li>
+		<li><a href="/layer7?idc=huati/l7_huati_yf">话题永丰</a></li>
+		<li><a href="/layer7?idc=hongbao/l7_hongbao_tc">红包土城</a></li>
+		<li><a href="/layer7?idc=hongbao/l7_hongbao_yf">红包永丰</a></li>
+	    </ul>
+    </div>
+
+    </div>
+
+</nav>
+
+
+<div id="content">
+        {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

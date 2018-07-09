@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="span2  col-xs-12 col-sm-3 col-md-2">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="/asset/">主机录入</a></li>
+                    <li><a href="/seeasset/">主机信息查看</a></li>
+                </ul>
+            </div>
+                 <div style="color: crimson;">{{ list.status }}</div>
+            <div ><h4>主机组录入:</h4></div>
+            <div class="col-xs-12 col-sm-9 col-md-10">
+                <form class="form-horizontal" role="form" method="post" action="/asset/">
+                    <div class="form-group">
+                        <label for="hostgroup" class="col-sm-2 control-label">主机组</label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control"  name="hostgroup" id="id_hostgroup" placeholder="输入主机组">
+                </div>
+                </div>
+                 <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+			            <button type="submit" class="btn btn-default">提交</button>
+		            </div>
+                 </div>
+                 </form>
+
+                  <div ><h4>主机录入:</h4></div>
+                <form class="form-horizontal" role="form" method="post" action="/asset2/">
+                <div class="form-group">
+                    <label for="ip" class="col-sm-2 control-label">主机ip</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="ip" id="id_ip" placeholder="输入主机ip">
+                    </div>
+                </div>
+
+                 <div class="form-group">
+                        <label for="hostgroup" class="col-sm-2 control-label">所属业务:</label>
+                        <div class="col-sm-5">
+                            <select class="form-control" required name="hostgroup" id="id_hostgroup">
+                                {% for item in list.GroupType %}
+                                <option value="{{ item.id }}">{{ item.name }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                 </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+			            <button type="submit" class="btn btn-default">提交</button>
+		            </div>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
